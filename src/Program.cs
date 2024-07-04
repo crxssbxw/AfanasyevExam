@@ -16,28 +16,24 @@ namespace src
             {
                 string localName, localFoundation;
                 int localPopulation = 0;
+                DateTime dateResult;
 
                 Console.WriteLine("Введите название города: ");
-
-                do
-                {
-                    localName = Console.ReadLine();
-                }
-                while (localName.All(a => !char.IsLetter(a)));
+                localName = Console.ReadLine();
 
                 Console.WriteLine("Введите дату основания города (DD.MM.YY): ");
 
-                DateTime dateResult;
-
-                do
+                while (!DateTime.TryParse(localFoundation = Console.ReadLine(), out dateResult))
                 {
-                    localFoundation = Console.ReadLine();
+                    Console.WriteLine("Некорректный ввод!");
                 }
-                while (!DateTime.TryParse(localFoundation, out dateResult));
 
                 Console.WriteLine("Введите количество жителей в городе: ");
 
-                while (!int.TryParse(Console.ReadLine(), out localPopulation) && localPopulation < 0);
+                while (!int.TryParse(Console.ReadLine(), out localPopulation) || localPopulation < 0)
+                {
+                    Console.WriteLine("Некорректный ввод!");
+                }
 
                 city.Name = localName;
                 city.Foundation = localFoundation;
@@ -50,9 +46,9 @@ namespace src
 
             Console.Write("Введите размерность массива: ");
 
-            while (int.TryParse(Console.ReadLine(), out listLenght) && listLenght < 0)
+            while (!int.TryParse(Console.ReadLine(), out listLenght) || listLenght <= 0)
             {
-                Console.WriteLine("Размер массива должен быть больше 0!");
+                Console.WriteLine("Некорректный ввод!");
             }
 
             cityControl.Cities = new(listLenght);
