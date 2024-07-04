@@ -11,9 +11,9 @@ namespace src.Classes
     {
         public List<City> Cities;
 
-        public void Sort()
+        public void SortCities()
         {
-            Cities.Sort((a, b) => string.Compare($"{b.Foundation} {b.Population.ToString()}", $"{a.Foundation} {a.Population.ToString()}"));
+            Cities.Sort((a, b) => string.Compare($"{b.Population.ToString()} {b.Foundation}", $"{a.Population.ToString()} {a.Foundation}"));
         }
 
         public void Save()

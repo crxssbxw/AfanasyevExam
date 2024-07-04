@@ -60,8 +60,11 @@ namespace src
                 cityControl.Cities.Add(city);
             }
 
-            cityControl.Sort();
+            cityControl.SortCities();
             cityControl.Save();
+
+            Console.WriteLine("Программа завершена, файл сохранен в папке File.\nНажмите любую клавишу");
+            Console.ReadKey();
         }
     }
 }
